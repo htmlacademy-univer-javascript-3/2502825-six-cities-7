@@ -5,6 +5,7 @@ import {OfferPreview} from '../../types/offer';
 const CardVariant = {
   cities: {width: 260, height: 200, infoClassName: ''},
   favorites: {width: 150, height: 110, infoClassName: 'favorites__card-info'},
+  'near-places': {width: 260, height: 200, infoClassName: ''},
 } as const;
 
 type PlaceCardProps = {

@@ -22,6 +22,10 @@ export const RATING_OPTIONS = [
   {value: 1, title: 'terribly'},
 ] as const;
 
+export const MAX_REVIEWS_COUNT = 10;
+
+export const MAX_NEARBY_COUNT = 3;
+
 export const CommentLength = {
   Min: 50,
   Max: 300,

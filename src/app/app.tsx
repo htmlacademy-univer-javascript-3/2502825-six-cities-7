@@ -7,15 +7,17 @@ import FavoritesPage from '../pages/favorites/favorites';
 import OfferPage from '../pages/offer/offer';
 import NotFoundPage from '../pages/not-found/not-found';
 import {City, Offer, OfferPreview} from '../types/offer';
+import {Review} from '../types/review';
 
 type AppProps = {
   city: City;
   offers: OfferPreview[];
   fullOffers: Offer[];
   favoriteOffers: OfferPreview[];
+  reviews: Review[];
 };
 
-function App({city, offers, fullOffers, favoriteOffers}: AppProps): JSX.Element {
+function App({city, offers, fullOffers, favoriteOffers, reviews}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -29,7 +31,7 @@ function App({city, offers, fullOffers, favoriteOffers}: AppProps): JSX.Element 
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<OfferPage offers={fullOffers} />} />
+        <Route path={AppRoute.Offer} element={<OfferPage offers={fullOffers} nearbyOffers={offers} reviews={reviews} />} />
         <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
