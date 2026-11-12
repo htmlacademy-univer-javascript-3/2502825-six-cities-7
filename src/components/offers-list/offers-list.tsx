@@ -1,4 +1,3 @@
-import {useState} from 'react';
 import PlaceCard from '../place-card/place-card';
 import {OfferPreview} from '../../types/offer';
 
@@ -10,11 +9,10 @@ const ListClassName = {
 type OffersListProps = {
   offers: OfferPreview[];
   variant?: keyof typeof ListClassName;
+  onActiveOfferChange?: (id: OfferPreview['id'] | null) => void;
 };
 
-function OffersList({offers, variant = 'cities'}: OffersListProps): JSX.Element {
-  const [, setActiveOfferId] = useState<OfferPreview['id'] | null>(null);
-
+function OffersList({offers, variant = 'cities', onActiveOfferChange}: OffersListProps): JSX.Element {
   return (
     <div className={ListClassName[variant]}>
       {offers.map((offer) => (
@@ -22,8 +20,8 @@ function OffersList({offers, variant = 'cities'}: OffersListProps): JSX.Element 
           key={offer.id}
           offer={offer}
           variant={variant}
-          onMouseEnter={() => setActiveOfferId(offer.id)}
-          onMouseLeave={() => setActiveOfferId(null)}
+          onMouseEnter={() => onActiveOfferChange?.(offer.id)}
+          onMouseLeave={() => onActiveOfferChange?.(null)}
         />
       ))}
     </div>

@@ -43,3 +43,12 @@ export const CITIES = [
 export type CityName = typeof CITIES[number]['name'];
 
 export const DEFAULT_CITY: CityName = 'Paris';
+
+export const SortType = {
+  Popular: 'Popular',
+  PriceLowToHigh: 'Price: low to high',
+  PriceHighToLow: 'Price: high to low',
+  TopRated: 'Top rated first',
+} as const;
+
+export type SortType = typeof SortType[keyof typeof SortType];

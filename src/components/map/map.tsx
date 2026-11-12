@@ -10,13 +10,20 @@ const defaultIcon = leaflet.icon({
   iconAnchor: [13.5, 39],
 });
 
+const activeIcon = leaflet.icon({
+  iconUrl: 'img/pin-active.svg',
+  iconSize: [27, 39],
+  iconAnchor: [13.5, 39],
+});
+
 type MapProps = {
   className: string;
   city: City;
   offers: OfferPreview[];
+  activeOfferId?: OfferPreview['id'] | null;
 };
 
-function Map({className, city, offers}: MapProps): JSX.Element {
+function Map({className, city, offers, activeOfferId = null}: MapProps): JSX.Element {
   const mapRef = useRef<HTMLElement>(null);
   const map = useMap(mapRef);
 
@@ -27,17 +34,25 @@ function Map({className, city, offers}: MapProps): JSX.Element {
 
     const {latitude, longitude, zoom} = city.location;
     map.setView([latitude, longitude], zoom);
+  }, [map, city]);
+
+  useEffect(() => {
+    if (!map) {
+      return;
+    }
 
     const markers = leaflet.layerGroup(
       offers.map((offer) =>
-        leaflet.marker([offer.location.latitude, offer.location.longitude], {icon: defaultIcon})
+        leaflet.marker([offer.location.latitude, offer.location.longitude], {
+          icon: offer.id === activeOfferId ? activeIcon : defaultIcon,
+        })
       )
     ).addTo(map);
 
     return () => {
       markers.remove();
     };
-  }, [map, city, offers]);
+  }, [map, offers, activeOfferId]);
 
   return <section className={`${className} map`} ref={mapRef}></section>;
 }
