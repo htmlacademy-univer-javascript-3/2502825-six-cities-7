@@ -23,7 +23,7 @@ function OfferPage({offers, nearbyOffers, reviews}: OfferPageProps): JSX.Element
   }
 
   const shownNearbyOffers = nearbyOffers
-    .filter((item) => item.id !== offer.id)
+    .filter((item) => item.id !== offer.id && item.city.name === offer.city.name)
     .slice(0, MAX_NEARBY_COUNT);
 
   return (

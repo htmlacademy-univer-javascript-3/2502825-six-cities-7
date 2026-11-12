@@ -1,5 +1,10 @@
 import {City, Host, Offer, OfferPreview} from '../types/offer';
 
+const paris: City = {
+  name: 'Paris',
+  location: {latitude: 48.85661, longitude: 2.351499, zoom: 13},
+};
+
 export const amsterdam: City = {
   name: 'Amsterdam',
   location: {latitude: 52.37454, longitude: 4.897976, zoom: 13},
@@ -18,8 +23,8 @@ export const offers: OfferPreview[] = [
     type: 'hotel',
     price: 237,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/2.jpg',
-    city: amsterdam,
-    location: {latitude: 52.3909553943508, longitude: 4.85309666406198, zoom: 16},
+    city: paris,
+    location: {latitude: 48.8656, longitude: 2.3412, zoom: 16},
     isFavorite: true,
     isPremium: true,
     rating: 4.3,
@@ -42,8 +47,8 @@ export const offers: OfferPreview[] = [
     type: 'room',
     price: 222,
     previewImage: 'https://14.design.htmlacademy.pro/static/hotel/10.jpg',
-    city: amsterdam,
-    location: {latitude: 52.3909553943508, longitude: 4.929309666406198, zoom: 16},
+    city: paris,
+    location: {latitude: 48.8516, longitude: 2.3601, zoom: 16},
     isFavorite: true,
     isPremium: true,
     rating: 4,
@@ -77,8 +82,8 @@ export const fullOffers: Offer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/12.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/2.jpg',
     ],
-    city: amsterdam,
-    location: {latitude: 52.3909553943508, longitude: 4.85309666406198, zoom: 16},
+    city: paris,
+    location: {latitude: 48.8656, longitude: 2.3412, zoom: 16},
     goods: ['Towels', 'Baby seat', 'Wi-Fi', 'Dishwasher', 'Washer', 'Fridge', 'Laptop friendly workspace', 'Heating', 'Cable TV'],
     host,
     isFavorite: true,
@@ -125,8 +130,8 @@ export const fullOffers: Offer[] = [
       'https://14.design.htmlacademy.pro/static/hotel/12.jpg',
       'https://14.design.htmlacademy.pro/static/hotel/1.jpg',
     ],
-    city: amsterdam,
-    location: {latitude: 52.3909553943508, longitude: 4.929309666406198, zoom: 16},
+    city: paris,
+    location: {latitude: 48.8516, longitude: 2.3601, zoom: 16},
     goods: ['Cable TV', 'Coffee machine', 'Dishwasher', 'Wi-Fi', 'Kitchen', 'Laptop friendly workspace', 'Baby seat', 'Heating', 'Towels'],
     host,
     isFavorite: true,

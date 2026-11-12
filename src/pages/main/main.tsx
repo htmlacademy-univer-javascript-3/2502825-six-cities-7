@@ -1,15 +1,20 @@
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
+import {AppRoute, CITIES} from '../../const';
 import OffersList from '../../components/offers-list/offers-list';
 import Map from '../../components/map/map';
-import {City, OfferPreview} from '../../types/offer';
+import CitiesList from '../../components/cities-list/cities-list';
+import {useAppDispatch, useAppSelector} from '../../hooks';
+import {changeCity} from '../../store/action';
+import {selectCity, selectCityOffers} from '../../store/selectors';
 
-type MainPageProps = {
-  city: City;
-  offers: OfferPreview[];
-};
+const cityNames = CITIES.map(({name}) => name);
 
-function MainPage({city, offers}: MainPageProps): JSX.Element {
+function MainPage(): JSX.Element {
+  const dispatch = useAppDispatch();
+  const activeCity = useAppSelector(selectCity);
+  const offers = useAppSelector(selectCityOffers);
+  const city = CITIES.find(({name}) => name === activeCity) ?? CITIES[0];
+
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -45,38 +50,7 @@ function MainPage({city, offers}: MainPageProps): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <ul className="locations__list tabs__list">
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.Main}>
-                  <span>Paris</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.Main}>
-                  <span>Cologne</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.Main}>
-                  <span>Brussels</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item tabs__item--active" to={AppRoute.Main}>
-                  <span>Amsterdam</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.Main}>
-                  <span>Hamburg</span>
-                </Link>
-              </li>
-              <li className="locations__item">
-                <Link className="locations__item-link tabs__item" to={AppRoute.Main}>
-                  <span>Dusseldorf</span>
-                </Link>
-              </li>
-            </ul>
+            <CitiesList cities={cityNames} activeCity={activeCity} onCityClick={(cityName) => dispatch(changeCity(cityName))} />
           </section>
         </div>
         <div className="cities">
