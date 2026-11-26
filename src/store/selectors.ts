@@ -7,6 +7,16 @@ export const selectOffers = (state: State) => state.offers;
 
 export const selectIsOffersLoading = (state: State) => state.isOffersLoading;
 
+export const selectOffer = (state: State) => state.offer;
+
+export const selectIsOfferLoading = (state: State) => state.isOfferLoading;
+
+export const selectIsOfferNotFound = (state: State) => state.isOfferNotFound;
+
+export const selectNearbyOffers = (state: State) => state.nearbyOffers;
+
+export const selectReviews = (state: State) => state.reviews;
+
 export const selectAuthorizationStatus = (state: State) => state.authorizationStatus;
 
 export const selectUser = (state: State) => state.user;

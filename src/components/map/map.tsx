@@ -19,7 +19,7 @@ const activeIcon = leaflet.icon({
 type MapProps = {
   className: string;
   city: City;
-  offers: OfferPreview[];
+  offers: Pick<OfferPreview, 'id' | 'location'>[];
   activeOfferId?: OfferPreview['id'] | null;
 };
 
